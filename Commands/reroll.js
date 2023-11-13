@@ -2,6 +2,9 @@ const Discord = require('discord.js')
 
 module.exports = {
     name: "reroll",
+    description: "reroll la radio !",
+    permission : "Aucune",
+    dm : false,
 
     async run(client, message) {
         

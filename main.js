@@ -4,34 +4,36 @@ const client = new Discord.Client({intents})
 //const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const config = require('./config')
 //Les loader
-const loadCommands = require('./loader/loadCommands')
+//const loadCommands = require('./loader/loadCommands')
 const loadEvents = require('./loader/loadEvents')
+//pour la fonction radio
+const schedule = require('node-schedule');
+
+    
+
+    const channelID = '1098393458810556426'; // ID du canal où le message sera envoyé
 
 
-
-function sendMessage() {
-    const channel = client.channels.cache.get('1098305173165715508'); // Remplacez CHANNEL_ID par l'identifiant du salon où vous souhaitez envoyer le message
-    /*if (channel) {
-      channel.send("Bonjour à tous !");
-    } else {
-      console.error("Impossible de trouver le salon pour envoyer le message !");
-    }*/
-    //lancer la commande reroll
-    const randomNum = Math.floor(Math.random() * 1000);
-    channel.send(`Radio journaliere : ${randomNum}`);
-  }
-
-  // Définir l'intervalle pour envoyer le message tous les jours à 6h
-  //const interval = 24 * 60 * 60 * 1000; // 24 heures en millisecondes
-    const interval = 1 * 60 * 1000; // 1 min en millisecondes
-    const now = new Date();
-    const delay = interval - now % interval;
-    setTimeout(() => {
-        sendMessage();
-        setInterval(sendMessage, interval);
-    }, delay);
-
-
+    client.once('ready', () => {
+      console.log('Le bot est en ligne !');
+      
+      // Définir la règle pour planifier l'envoi du message
+      const rule = new schedule.RecurrenceRule();
+      rule.tz = 'Etc/GMT-2'; // Définir le fuseau horaire pour éviter les problèmes liés à l'heure d'été / d'hiver
+      rule.hour = 2; // Définir l'heure
+      rule.minute = 0; // Définir les minutes
+    
+      // Planifier l'envoi du message
+      schedule.scheduleJob(rule, () => {
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+          const randomNum = Math.floor(Math.random() * 1000);
+          channel.send(`Radio journalière : ${randomNum}`);
+        } else {
+          console.error(`Impossible de trouver le salon d'ID ${channelID} pour envoyer le message !`);
+        }
+      });
+    });
 
 
 
@@ -41,5 +43,4 @@ function sendMessage() {
 client.commands = new Discord.Collection()
 
 client.login(config.token)
-loadCommands(client)
 loadEvents(client)
