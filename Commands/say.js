@@ -7,6 +7,11 @@ module.exports = {
     permission : "Aucune",
     dm : false,
     options: [{
+        name: "pseudo",
+        type: "string",
+        description: "Le pseudo à afficher (optionnel)",
+        required: false
+    },{
         name: "message",
         type: "string",
         description: "Le message à envoyer ( | pour les retours à la ligne)",
@@ -21,8 +26,14 @@ module.exports = {
 
     async run(client, message, args) {
 
-
-        let msg = args.get("message").value.replace("|", "\n");
+        let msg = ``;
+        if (args.get("pseudo")?.value) {
+            msg += `\`\`\`Mail crypté \nConnection en cours... \`\`\``
+            msg += `**${args.get("pseudo").value}** : `;
+        } else {
+            msg += `**Anonyme** : `;
+        }
+        msg += args.get("message").value.replace("|", "\n");
         let channelID = args.get("channel")?.value;
         let channel = client.channels.cache.get(channelID);
 
