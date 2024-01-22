@@ -1,0 +1,2 @@
+[2024-01-22T16:33:24.177Z]	 d3b1rum4n#0 a envoyé un message anonyme dans le canal général : 
+"/say pseudo:test message:ça roule ? | oui"

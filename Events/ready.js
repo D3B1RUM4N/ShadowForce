@@ -7,4 +7,5 @@ module.exports = async client => {
 
     //client.user.setActivity("🔥 | !help", {type: "WATCHING"})
     console.log(`${client.user.tag} est bien en ligne !`)
+    console.log('done')
 }
