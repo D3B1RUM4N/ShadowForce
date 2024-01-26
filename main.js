@@ -55,7 +55,8 @@ moment.locale('fr');
       });
       
   });
-
+//magenta hexa : #FF00FF
+client.color = "#FF00FF";
 
 
 
