@@ -131,4 +131,4 @@ dist
 .pnp.*
 
 # config.js
-./config.js
+config.js
