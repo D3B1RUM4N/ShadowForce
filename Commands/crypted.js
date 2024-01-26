@@ -5,6 +5,7 @@ module.exports = {
     name: "crypted",
     description: "Ecris un message en anonyme, il serra crypté!",
     permission : "Aucune",
+    category : "RP",
     dm : false,
     options: [{
         name: "pseudo",
@@ -25,7 +26,6 @@ module.exports = {
     
     
     
-
     async run(client, message, args) {
 
         const replacements = {

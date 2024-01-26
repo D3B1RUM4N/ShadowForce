@@ -5,6 +5,7 @@ module.exports = {
     name: "say",
     description: "Ecris un message en anonyme !",
     permission : "Aucune",
+    category : "RP",
     dm : false,
     options: [{
         name: "pseudo",
@@ -23,6 +24,8 @@ module.exports = {
         required: false
     }],
     
+    
+    
 
     async run(client, message, args) {
 
@@ -30,9 +33,10 @@ module.exports = {
         msg += `\`\`\`Mail crypté \nConnection en cours... \`\`\``
         msg += `**${args.get("pseudo").value}** : `;
 
-        msg += args.get("message").value.replace("|", '\n');
+        msg += args.get("message").value.replace('|', '\n');
         let channelID = args.get("channel")?.value;
         let channel = client.channels.cache.get(channelID);
+
 
         if (!channel) {
         // Si aucun channel n'est spécifié, vous pouvez spécifier un channel par défaut ici
@@ -46,4 +50,7 @@ module.exports = {
 
         //await message.reply(`Pong :ping_pong: : \`${client.ws.ping}\` ms :)`)
     }
+
+
+    
 }

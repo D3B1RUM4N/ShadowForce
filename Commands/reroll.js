@@ -4,6 +4,7 @@ module.exports = {
     name: "reroll",
     description: "reroll la radio !",
     permission : "Aucune",
+    category : "RP",
     dm : false,
 
     async run(client, message) {

@@ -3,7 +3,8 @@ const Discord = require('discord.js')
 module.exports = {
     name: "disconnect",
     description: "Deconnecte le bot",
-    permission : "Aucune",
+    permission : Discord.PermissionFlagsBits.Administrator,
+    category : "Moderation",
     dm : false,
     
 
