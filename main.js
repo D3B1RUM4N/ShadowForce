@@ -24,7 +24,7 @@ moment.locale('fr');
   const channelID = '1195078035616055356'; // ID du canal où le message sera envoyé
 
 
-  client.once('ready', () => {
+  /*client.once('ready', () => {
     console.log('Le bot est en ligne !');
     
     // Définir la règle pour planifier l'envoi du message
@@ -44,17 +44,17 @@ moment.locale('fr');
         console.error(`Impossible de trouver le salon d'ID ${channelID} pour envoyer le message !`);
       }
     });
-  });
+  });*/
 
 
-  app.listen( async () => {
-    // Run every 30 seconds
-    cron.schedule('*/30 * * * * *', async () => {
-        console.log("actualisation")
-        await players.getInfos(client, config);
-      });
+  // app.listen( async () => {
+  //   // Run every 30 seconds
+  //   cron.schedule('*/30 * * * * *', async () => {
+  //       console.log("actualisation")
+  //       await players.getInfos(client, config);
+  //     });
       
-  });
+  // });
 //magenta hexa : #FF00FF
 client.color = "#FF00FF";
 
