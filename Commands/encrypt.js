@@ -29,7 +29,7 @@ module.exports = {
         logs.log(`[${new Date().toISOString()}]\t ${message.user.tag} a envoyé un message crypté dans le canal ${message.channel.name} : \n"${message}"`);
 
         let crypted = ``;
-        crypted += `\`\`\`Mail crypté\nCryptage effectué\n/decrypt pour decodé avec la clé \`\`\``
+        crypted += `\`\`\`Mail crypté\nCryptage effectué\`\`\``
         crypted += `**${args.get("pseudo").value}** : `;
 
         // je veux remplacer les caractères spéciaux par leur équivalent
@@ -39,15 +39,15 @@ module.exports = {
         // Vérifier si le décalage est dans la plage valide
         if (shift < 0) {
             shift = shift % 26 + 26;
-        }else{
+        } else {
             shift = shift % 26;
         }
 
         // Convertir le message en tableau de caractères
-        for(var i=0; i<decrypted.length; i++) {
-            if (decrypted[i].match(/[a-z]/i)){
+        for (var i = 0; i < decrypted.length; i++) {
+            if (decrypted[i].match(/[a-z]/i)) {
                 const ascii = decrypted[i].charCodeAt(0)
-                if (ascii >= 65 && ascii <=90) {
+                if (ascii >= 65 && ascii <= 90) {
                     crypted += String.fromCharCode(((ascii - 65 + shift) % 26) + 65)
                 } else if (ascii >= 97 && ascii <= 122) {
                     crypted += String.fromCharCode(((ascii - 97 + shift) % 26) + 97);
@@ -64,7 +64,7 @@ module.exports = {
         }
 
         channel = client.channels.cache.get(message.channel.id);
-        await message.reply({content: `message original : ${args.get("message").value}`, ephemeral: true})
+        await message.reply({ content: `message original : ${args.get("message").value}`, ephemeral: true })
         await channel.send(crypted)
     }
 }
