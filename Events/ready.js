@@ -8,7 +8,7 @@ module.exports = async client => {
     client.user.setPresence({
         activities: [{
             status: 'dnd',
-            name: `/say -> msg anonyme`,
+            name: `/encrypt -> msg crypté`,
             type: ActivityType.Watching,
             url: 'https://discord.gg/SHV4jQ77Kq'
         }],
