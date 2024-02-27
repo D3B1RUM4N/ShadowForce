@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/rest": "^1.7.1",
+    "@prisma/client": "^5.10.2",
     "discord.js": "^14.14.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
@@ -26,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/D3B1RUM4N/TheFirm/issues"
   },
-  "homepage": "https://github.com/D3B1RUM4N/TheFirm#readme"
+  "homepage": "https://github.com/D3B1RUM4N/TheFirm#readme",
+  "devDependencies": {
+    "prisma": "^5.10.2"
+  }
 }
