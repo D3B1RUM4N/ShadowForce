@@ -19,6 +19,8 @@ const app = express()
 app.set('view engine', 'pug');
 moment.locale('fr');
 
+require('dotenv').config();
+
 
 
   const channelID = '1195078035616055356'; // ID du canal où le message sera envoyé
