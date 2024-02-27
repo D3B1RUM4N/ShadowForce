@@ -67,7 +67,7 @@ module.exports = {
             .setFooter({text: `Demandé par ${message.user.tag}`})
             .setTimestamp()
             await personnes.forEach(personne => {
-                Embed.addFields({name: `${personne.lastName}`, value: `ID : #${personne.id}\nPrenom : ${personne.firstName}\nTelephone : ${personne.phoneNumber}\nJob : ${personne.job}`})
+                Embed.addFields({name: `${personne.lastName}`, value: `ID : #${personne.id} - ${personne.firstName} - ${personne.phoneNumber} - ${personne.job}`})
             })
 
         await message.reply({embeds: [Embed]})
