@@ -1,7 +1,11 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 const loadSlashCommands = require('../loader/loadSlashCommands')
+const loadDatabase = require('../loader/loadDatabase')
+
 
 module.exports = async client => {
+
+    client.db = await loadDatabase()
 
     await loadSlashCommands(client)
 
