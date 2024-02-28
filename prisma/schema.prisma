@@ -11,14 +11,15 @@ datasource db {
 }
 
 model Server {
-  serverID      String          @id
-  serverName    String
+  serverID   String @id
+  serverName String
 }
 
 model Personne {
-  id            Int             @id @default(autoincrement())
-  phoneNumber   String          @unique
-  lastName      String?
-  firstName     String?
-  job           String?
+  id          Int     @id @default(autoincrement())
+  phoneNumber String  @unique
+  lastName    String?
+  firstName   String?
+  job         String?
+  groupe      String  @default("civil")
 }

@@ -9,31 +9,36 @@ module.exports = {
         type: "number",
         description: "id de l'annuaire",
         required: true
-    },{
+    }, {
         name: "telephone",
         type: "string",
         description: "modifier son numero de telephone",
         required: false
-    },{
+    }, {
         name: "nom",
         type: "string",
         description: "modifier son nom",
         required: false
-    },{
+    }, {
         name: "prenom",
         type: "string",
         description: "modifier son prenom",
         required: false
-    },{
+    }, {
         name: "job",
         type: "string",
         description: "modifier son job",
+        required: false
+    }, {
+        name: "groupe",
+        type: "string",
+        description: "modifier son groupe",
         required: false
     }],
 
     async run(client, message, args) {
         const id = args.get("id").value
-        
+
 
         const peronne = await client.db.personne.findUnique({
             where: {
@@ -42,7 +47,7 @@ module.exports = {
         })
 
         if (!peronne) {
-            message.reply({content: `id inconnu`, ephemeral: true})
+            message.reply({ content: `id inconnu`, ephemeral: true })
             return
         }
 
@@ -50,6 +55,7 @@ module.exports = {
         const nom = args.get("nom")?.value || peronne.lastName
         const prenom = args.get("prenom")?.value || peronne.firstName
         const job = args.get("job")?.value || peronne.job
+        const groupe = args.get("groupe")?.value || peronne.groupe
 
         await client.db.personne.update({
             where: {
@@ -59,12 +65,13 @@ module.exports = {
                 phoneNumber: telephone,
                 lastName: nom,
                 firstName: prenom,
-                job: job
+                job: job,
+                groupe: groupe
             }
         }).then(() => {
-            message.reply({content: `${peronne.lastName} modifié avec succès`, ephemeral: true})
+            message.reply({ content: `${peronne.lastName} modifié avec succès`, ephemeral: true })
         }).catch((err) => {
-            message.reply({content: `Erreur lors de la midification de la personne : ${err}`, ephemeral: true})
+            message.reply({ content: `Erreur lors de la midification de la personne : ${err}`, ephemeral: true })
         })
     }
 }

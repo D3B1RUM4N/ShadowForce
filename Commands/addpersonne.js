@@ -14,15 +14,20 @@ module.exports = {
         type: "string",
         description: "son nom",
         required: false
-    },{
+    }, {
         name: "prenom",
         type: "string",
         description: "son prenom",
         required: false
-    },{
+    }, {
         name: "job",
         type: "string",
         description: "son job",
+        required: false
+    }, {
+        name: "groupe",
+        type: "string",
+        description: "son groupe",
         required: false
     }],
 
@@ -31,6 +36,7 @@ module.exports = {
         const nom = args.get("nom")?.value
         const prenom = args.get("prenom")?.value
         const job = args.get("job")?.value
+        const groupe = args.get("groupe")?.value || "civil"
 
         const peronne = await client.db.personne.findUnique({
             where: {
@@ -39,7 +45,7 @@ module.exports = {
         })
 
         if (peronne) {
-            message.reply({content: `Ce numéro de téléphone est déjà utilisé : /alterpersonne`, ephemeral: true})
+            message.reply({ content: `Ce numéro de téléphone est déjà utilisé : /alterpersonne`, ephemeral: true })
             return
         }
 
@@ -48,12 +54,13 @@ module.exports = {
                 phoneNumber: telephone,
                 lastName: nom,
                 firstName: prenom,
-                job: job
+                job: job,
+                groupe: groupe
             }
         }).then(() => {
-            message.reply({content: `Personne ajoutée avec succès`, ephemeral: true})
+            message.reply({ content: `Personne ajoutée avec succès`, ephemeral: true })
         }).catch((err) => {
-            message.reply({content: `Erreur lors de l'ajout de la personne : ${err}`, ephemeral: true})
+            message.reply({ content: `Erreur lors de l'ajout de la personne : ${err}`, ephemeral: true })
         })
     }
 }
