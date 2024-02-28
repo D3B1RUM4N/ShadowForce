@@ -58,7 +58,6 @@ module.exports = {
             message.reply({ content: `Aucun résultat`, ephemeral: true })
             return
         }
-
         let Embed = new Discord.EmbedBuilder()
             .setColor(client.color)
             .setTitle(`Annuaire`)
