@@ -20,6 +20,6 @@ model Personne {
   phoneNumber String  @unique
   lastName    String?
   firstName   String?
-  job         String?
+  job         String? @default("sans emploi")
   groupe      String  @default("civil")
 }

@@ -35,7 +35,7 @@ module.exports = {
         const telephone = args.get("telephone").value
         const nom = args.get("nom")?.value
         const prenom = args.get("prenom")?.value
-        const job = args.get("job")?.value
+        const job = args.get("job")?.value || "sans emploi"
         const groupe = args.get("groupe")?.value || "civil"
 
         const peronne = await client.db.personne.findUnique({
