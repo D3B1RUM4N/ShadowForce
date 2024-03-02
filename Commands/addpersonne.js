@@ -58,7 +58,7 @@ module.exports = {
                 groupe: groupe
             }
         }).then(() => {
-            message.reply({ content: `Personne ajoutée avec succès`, ephemeral: true })
+            message.reply({ content: `${nom} ${prenom} ajoutée avec succès a l'annuaire`, ephemeral: false })
         }).catch((err) => {
             message.reply({ content: `Erreur lors de l'ajout de la personne : ${err}`, ephemeral: true })
         })

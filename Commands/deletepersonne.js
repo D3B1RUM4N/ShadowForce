@@ -1,6 +1,6 @@
 module.exports = {
     name: "deletepersonne",
-    description: "ajoute une personne a l'annuaire!",
+    description: "suprime une personne a l'annuaire!",
     permission: "Aucune",
     category: "RP",
     dm: false,
